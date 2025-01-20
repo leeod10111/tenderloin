@@ -112,11 +112,11 @@ $desktop: 750px;
         display: grid;
         grid-template-columns: repeat(7, 1fr);
     }
+    .MuiGrid-container.MuiGrid-spacing-xs-2 {
+        display: block !important;
+    }
 }
 
-.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2 {
-    display: block;
-  }
   
   .MuiGrid-container.board-container .board-container-2 .MuiButtonBase-root {
     flex-wrap: wrap;
