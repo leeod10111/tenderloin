@@ -1,0 +1,35 @@
+$large-phone: 750px;
+$medium-phone: 440px;
+$small-phone: 380px;
+
+.effect-slider {
+    height: 100% !important;    
+}
+
+.effect-slider-text {
+    color: rgba(239, 239, 239, 0.907) !important;
+}
+
+@media screen and (max-width: $large-phone) {
+
+    .effect-slider-text {
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: $medium-phone) {
+
+    .effect-slider-text {
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: $small-phone) {
+    .effect-slider-text {
+        font-size: small;
+    }
+}
+
+
+
+
