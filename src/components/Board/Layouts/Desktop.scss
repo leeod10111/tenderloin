@@ -111,6 +111,9 @@ $desktop: 750px;
     .MuiGrid-container {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+        width: 100% !important;
     }
     .MuiGrid-container.MuiGrid-spacing-xs-2 {
         display: block !important;
