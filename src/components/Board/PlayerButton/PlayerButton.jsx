@@ -1,15 +1,21 @@
 import { Box, Button, Typography } from "@mui/material";
-import { PauseCircle, PlayCircle } from "@mui/icons-material/";
+import { PauseCircle, PlayCircle, DeleteOutline} from "@mui/icons-material/";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import "./PlayerButton.scss";
 
-export const PlayerButton = ({ handleOnClick, player, deck }) => {
+export const PlayerButton = ({ handleOnClick, player, deck, handleDelete }) => {
     // Safely fetch the players array
     const players = useSelector((state) => state.core.decks?.[deck]?.players || []);
     const button = players.find((i) => i.title === player.title) || {
         status: "stopped", // Default status for newly uploaded players
     };
+    const [isPlaying, setIsPlaying] = useState(false); // Track play/pause state
 
+    const handleClick = () => {
+        setIsPlaying((prev) => !prev); // Toggle play/pause state
+        handleOnClick(player); // Trigger parent handler
+    };
     // Define styles for different statuses
     const styles = {
         status: {
@@ -29,25 +35,36 @@ export const PlayerButton = ({ handleOnClick, player, deck }) => {
     };
 
     return (
-        <Button
+        <button
             className={"player-button"}
-            onClick={() => handleOnClick(button, player)}
+            onClick={handleClick}
             fullWidth
             size="large"
             disabled={button.status === "queued"}
             sx={styles.backgroundColor[button.status]}
             color={"inherit"}
         >
-            <Box position={"relative"}>
-                {styles.status[button.status] || styles.status.stopped}
-            </Box>
-            <Typography
-                variant="caption"
-                textAlign="center"
+            <div position={"relative"}>
+            {isPlaying ? (
+                    <PauseCircle fontSize="large" className="player-icon" />
+                ) : (
+                    <PlayCircle fontSize="large" className="player-icon" />
+                )}
+            </div>
+            <p
                 sx={{ color: "#fff" }}
             >
                 {player.title || "Untitled"}
-            </Typography>
-        </Button>
+            </p>
+            <span
+                color="error"
+                onClick={(e) => {
+                    e.stopPropagation(); // Prevent triggering the play/pause handler
+                    handleDelete(player);
+                }}
+            >
+                <DeleteOutline fontSize="large" />
+            </span>
+        </button>
     );
 };

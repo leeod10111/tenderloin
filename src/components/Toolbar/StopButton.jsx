@@ -3,11 +3,11 @@ import { Stop } from "@mui/icons-material"
 
 import React from 'react'
 
-export const StopButton = ({handleStop}) => {
+export const StopButton = ({handleStopBoards}) => {
   return (
     <IconButton
         size="small"
-        onClick={handleStop}
+        onClick={handleStopBoards}
     >
         <Stop className="stopButton" htmlColor="wheat" />
     </IconButton>

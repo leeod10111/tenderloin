@@ -1,0 +1,139 @@
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-top: 60px;
+  justify-content: center;
+}
+
+.MuiButtonBase-root {
+  background: #222 !important;
+  color: white !important;
+  padding: 6px !important;
+  border: 1px solid #999 !important;
+  text-transform: uppercase !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  font-weight: bold !important;
+  border-radius: 0px !important;
+}
+
+
+.board {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  &__title {
+    background: #222;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #999;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 22px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 0px;
+  }
+
+  &__play-button {
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #999;
+    
+    &--empty {
+      border: 1px dashed #999;
+    }
+  }
+
+  &__player-group {
+    width: 150px;
+
+    p {
+      color: white;
+    }
+
+  }
+}
+
+.loopbox-board {
+  padding-left: 10px;
+  padding-right: 10px;
+   &__players {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+
+    @media (max-width: 767px) {
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0px;
+      
+    }
+   }
+}
+
+.loopbox-container {
+  @media (max-width: 767px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 96vw;
+
+    .board__player-group {
+      width: 100%;
+    }
+
+    .loopbox-board__players {
+      width: auto;
+    }
+  }
+}
+
+.setup {
+  h1 {
+    color: white;
+  }
+  width: 60vw;
+
+  .MuiButtonBase-root {
+    width: 100% !important;
+  }
+
+  &__inputs {
+    background: #555;
+    padding: 20px;
+    border: 1px solid #999;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .input-adjust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+    padding: 5px 20px;
+
+    input {
+      margin-left: 10px;
+      font-size: 16px;
+      padding: 5px 10px;
+      text-align: center;
+      background: black;
+      color: white;
+      font-weight: bold;
+      border: none;
+    }
+
+    p {
+      display: inline-block;
+      color: white;
+    }
+  }
+}

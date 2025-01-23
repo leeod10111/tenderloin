@@ -1,29 +1,11 @@
 import { Box, Grid } from "@mui/material";
 import { Board } from '../Board'
-import { DesktopToolbar } from "../../Toolbar/DesktopToolbar";
 import "./Desktop.scss"
 
-export const Desktop = ({ board1, board2, handleStopBoards}) => {
+export const Desktop = ({ board1}) => {
     return (
-        <Box
-            display="flex"
-            alignItems={"center"}
-            justifyContent={"center"}
-            height={"100%"}
-        >
-            <Grid
-                container
-                className="board-container"
-            >               
-            <div className="toolbar" >
-                <DesktopToolbar handleStopBoards={handleStopBoards} />
-            </div>
-            <div className="board-container-2">
-                    <Grid className="item" height={"100%"} item xs={12}>
-                        <Board {...board1} />
-                    </Grid>
-                </div>
-            </Grid>
-        </Box>
+       <div class="loopbox-container">
+            <Board {...board1} />
+       </div>
     );
 };

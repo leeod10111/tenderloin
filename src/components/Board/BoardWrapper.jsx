@@ -15,16 +15,7 @@ export const BoardWrapper = () => {
             id: id,
             deck: "a",
         });
-    const [players_2, bpm_2, loadingProgress_2, handleOnClick_2, stopBoard_2] =
-        usePlayers({
-            id: id,
-            deck: "b",
-        });
 
-    const handleStopBoards = () => {
-        stopBoard_1();
-        stopBoard_2();
-    };
 
     return (
         <Desktop
@@ -38,17 +29,6 @@ export const BoardWrapper = () => {
             handleOnClick: (button, player) =>
                 handleOnClick_1(button, player),
         }}
-        board2={{
-            id: id,
-            deck: "b",
-            bpm: bpm_2,
-            className: "board",
-            players: players_2,
-            loadingProgress: loadingProgress_2,
-            handleOnClick: (button, player) =>
-                handleOnClick_2(button, player),
-        }}
-        handleStopBoards={handleStopBoards}
     />
     );
 

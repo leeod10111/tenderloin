@@ -1,11 +1,12 @@
 import { Routes } from "./components/Router/Routes";
 import { Box } from "@mui/material";
+import { Desktop } from "./components/Board/Layouts/Desktop";
 
 function App() {
     return (
-        <Box height="calc(100vh)">
-            <Routes />
-        </Box>
+        <div>
+            <Desktop></Desktop>
+        </div>
     );
 }
 

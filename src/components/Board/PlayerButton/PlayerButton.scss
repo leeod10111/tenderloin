@@ -1,47 +1,13 @@
-$large-phone: 750px;
-$medium-phone: 440px;
-$small-phone: 380px;
-$widthButton: calc((100vw/14));
-$heightButton: $widthButton;
-
-.player {
-    &-button {
-        border-radius: 10% !important;
-        border: none;
-        cursor: pointer;
-        display: inline-block;
-        text-align: center;
-        text-decoration: none;
-        width: 25%;
-        height: 100%;
-        max-width: 10rem;
-        max-height: 10rem;
-        min-width: 3rem !important;
-        min-height: 3rem !important;
-    }
-
-    &-text {
-        color: rgba(239, 239, 239, 0.907) !important;
-        font-size: 0.5rem !important;
-    }
-
-    &-text-box {
-        position: absolute;
-        bottom: 0rem;
-    }
-
-    &-icon {
-        font-size: 2rem !important;
-    }
-
-    @media screen and (max-width: $large-phone) {
-
-        &-text {
-            font-size: 0.6rem !important;
-        }
-
-        &-icon {
-            font-size: 2rem !important;
-        }
-    }
+.player-button {
+  width: 100%;
+  min-height: 171px;
+  background: #222;
+  color: white;
+  border: 1px solid #999;
+  svg {
+    cursor: pointer;
+  }
+  .player-icon {
+    font-size: 50px;
+  }
 }
