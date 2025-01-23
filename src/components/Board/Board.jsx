@@ -15,6 +15,9 @@ export const Board = () => {
   const [playerGroups, setPlayerGroups] = useState(
     GROUP_HEADINGS.map(() => Array(4).fill(null)) // Initialize 4 slots per group as null
   );
+  const [playingStates, setPlayingStates] = useState(
+    GROUP_HEADINGS.map(() => Array(4).fill(false)) // Initialize all as not playing
+);
   const [playerInstances, setPlayerInstances] = useState({});
   const [toneBeats, setBeats] = useState(8);
   const [toneTempo, setTempo] = useState(120);
@@ -251,18 +254,24 @@ export const Board = () => {
       }
     }
   };
-  
   const handleStopBoards = () => {
-
+    // Stop all players
     playerGroups.forEach((group) => {
-      group.forEach((player) => {
-        if (player && player.player) {
-          player.player.stop(); // Stop all players
-        }
-      });
+        group.forEach((player) => {
+            if (player && player.player) {
+                player.player.stop(); // Stop all players
+                Tone.Transport.clear(player.player._scheduledEvent); // Clear scheduled events
+            }
+        });
     });
-  };
 
+    // Reset all playing states to false
+    setPlayingStates((prevStates) =>
+        prevStates.map((group) => group.map(() => false))
+    );
+
+    console.log("All players stopped and states reset.");
+};
   return (
     <div class="board" container>
       {!setupComplete ? (
@@ -321,10 +330,17 @@ export const Board = () => {
                   {player ? (
                     <PlayerButton
                       player={player}
-                      deck={"custom"}
+                      isPlaying={playingStates[groupIndex][slotIndex]}
+                      setPlayingState={(isPlaying) => {
+                          setPlayingStates((prevStates) => {
+                              const updatedStates = [...prevStates];
+                              updatedStates[groupIndex][slotIndex] = isPlaying;
+                              return updatedStates;
+                          });
+                      }}
                       handleOnClick={() => handlePlay(groupIndex, slotIndex)}
                       handleDelete={() => handleDelete(groupIndex, slotIndex)}
-                    />
+                  />
                   ) : (
                     <div className="board__play-button board__play-button--empty">
                       <input

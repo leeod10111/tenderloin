@@ -4,16 +4,24 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import "./PlayerButton.scss";
 
-export const PlayerButton = ({ handleOnClick, player, deck, handleDelete }) => {
+export const PlayerButton = ({
+    handleOnClick,
+    player,
+    isPlaying,
+    deck,
+    setPlayingState,
+    handleDelete,
+}) => {
     // Safely fetch the players array
     const players = useSelector((state) => state.core.decks?.[deck]?.players || []);
     const button = players.find((i) => i.title === player.title) || {
         status: "stopped", // Default status for newly uploaded players
     };
-    const [isPlaying, setIsPlaying] = useState(false); // Track play/pause state
 
     const handleClick = () => {
-        setIsPlaying((prev) => !prev); // Toggle play/pause state
+        console.log(setPlayingState)
+        const newIsPlaying = !isPlaying;
+        setPlayingState(newIsPlaying); // Update parent state
         handleOnClick(player); // Trigger parent handler
     };
     // Define styles for different statuses
